@@ -19,22 +19,30 @@
 ## Install
 
 ```sh
-npm install cancelrequest --save-dev
+npm install wbaxios --save-dev
+```
+
+## Import
+
+```javascript
+import wbAxios from 'wbaxios';
 ```
 
 ## Use
 
-```sh
-import cancelRequest from 'cancelrequest'
-
-cancelRequest.cancel([url]);
+#### init(baseUrl, headerConfig)
+```javascript
+wbAxios.init('https://www.fastmock.site/mock/654a6d890e9e4da4fb45f4a2a1180afb/testMock', {'x-token': 'this is a token'});
 ```
 
-## example
-```sh
-import cancelRequest from 'cancelrequest'
+#### get()
+```javascript
+wbAxios.get('/test');
+```
 
-cancelRequest.cancel('https://www.fastmock.site/mock/654a6d890e9e4da4fb45f4a2a1180afb/testMock/test');
+#### cancel()
+```javascript
+wbAxios.cancel('/test');
 ```
 
 ## Author

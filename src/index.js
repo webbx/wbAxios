@@ -6,15 +6,27 @@
  */
 import axios from 'axios';
 
-// 创建一个axios实例
-const service = axios.create({});
+const wbAxios = axios.create({});
+
+// 初始化配置请求api地址
+wbAxios.init = (baseUrl, headerConfig) => {
+	wbAxios.interceptors.request.use(config => {
+		config.baseURL = baseUrl;
+		const { headers } = config;
+		// 设置自定义header
+		Object.keys(headerConfig).forEach(function(key){
+			headers[key] = headerConfig[key];
+		});
+		return config;
+	});
+};
 
 // 请求队列存储器
 let pending = [];
 let CancelToken = axios.CancelToken;
 
 // 清除指定请求
-service.cancel = url => {
+wbAxios.cancel = url => {
 	if (url) {
 		pending.forEach((item, index) => {
 			if (item.UrlPath === url) {
@@ -41,12 +53,13 @@ let cancelPending = (config) => {
 };
 
 // 将请求写入请求队列存储器
-service.interceptors.request.use(config => {
+wbAxios.interceptors.request.use(config => {
 	cancelPending(config);
 	config.cancelToken = new CancelToken(res => {
 		pending.push({'UrlPath': config.url, 'Cancel': res})
 	});
+
 	return config;
 });
 
-export default service;
+export default wbAxios;

@@ -5,6 +5,7 @@
  * @github https://github.com/BoWang816
  */
 const path = require('path');
+const webpack = require('webpack');
 const genRules = require('./webpack-loader.config');
 
 const config = {

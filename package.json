@@ -1,7 +1,7 @@
 {
-    "name": "cancelrequest",
+    "name": "wbaxios",
     "version": "1.0.0",
-    "description": "用于取消axios请求",
+    "description": "axios封装，支持取消方法请求",
     "main": "index.js",
     "scripts": {
         "start": "node ./server",
