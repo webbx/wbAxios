@@ -22,6 +22,12 @@
 npm install wbaxios --save-dev
 ```
 
+## Start
+
+```sh
+npm run start
+```
+
 ## Import
 
 ```javascript
@@ -44,6 +50,10 @@ wbAxios.get('/test');
 ```javascript
 wbAxios.cancel('/test');
 ```
+
+## Demo
+
+http://localhost:2020
 
 ## Author
 

@@ -6,11 +6,11 @@
     "scripts": {
         "start": "node ./server",
         "build": "webpack --config webpack-pro.config.js",
-        "publish": "npm publish dist"
-    },
+		"version": "npm run build && npm publish dist"
+	},
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/webbx/cancelRequest.git"
+        "url": "git+https://github.com/webbx/wbAxios.git"
     },
     "keywords": [
         "cancel",
@@ -58,7 +58,7 @@
     "author": "Bowang816",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/webbx/cancelRequest/issues"
+        "url": "https://github.com/webbx/wbAxios/issues"
     },
-    "homepage": "https://github.com/webbx/cancelRequest#readme"
+    "homepage": "https://github.com/webbx/wbAxios#readme"
 }
