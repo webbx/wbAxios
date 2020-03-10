@@ -51,8 +51,8 @@ const config = {
 		new CleanWebpackPlugin(),
 		// 将文件复制到构建目录
 		new CopyWebpackPlugin([
-			{from: path.join(__dirname, './package.json'), to: '', toType: 'file'},
-			{from: path.join(__dirname, './README.md'), to: '', toType: 'file'}
+			{from: path.join(__dirname, './package.json'), to: '', toType: 'dir'},
+			{from: path.join(__dirname, './README.md'), to: '', toType: 'dir'}
 		])
 	],
 

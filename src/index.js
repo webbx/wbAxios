@@ -6,16 +6,29 @@
  */
 import axios from 'axios';
 
-const service = axios.create({
-	baseURL: '',
-});
+// 创建一个axios实例
+const service = axios.create({});
 
+// 请求队列存储器
 let pending = [];
 let CancelToken = axios.CancelToken;
+
+// 清除指定请求
+service.cancel = url => {
+	if (url) {
+		pending.forEach((item, index) => {
+			if (item.UrlPath === url) {
+				item.Cancel(); // 取消请求
+				pending.splice(index, 1) // 移除当前请求记录
+			}
+		})
+	}
+};
 
 let cancelPending = (config) => {
 	pending.forEach((item, index) => {
 		if (config) {
+			// 重复请求处理，点击多次
 			if (item.UrlPath === config.url) {
 				item.Cancel(); // 取消请求
 				pending.splice(index, 1) // 移除当前请求记录
@@ -27,7 +40,7 @@ let cancelPending = (config) => {
 	})
 };
 
-// 将请求写入pending
+// 将请求写入请求队列存储器
 service.interceptors.request.use(config => {
 	cancelPending(config);
 	config.cancelToken = new CancelToken(res => {

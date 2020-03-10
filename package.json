@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node ./server",
         "build": "webpack --config webpack-pro.config.js",
-        "buildDev": "webpack --config webpack-dev.config.js"
+        "publish": "npm publish dist"
     },
     "repository": {
         "type": "git",

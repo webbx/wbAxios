@@ -6,7 +6,6 @@
  */
 const path = require('path');
 const genRules = require('./webpack-loader.config');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
 	mode: 'development',
@@ -33,15 +32,7 @@ const config = {
 	// 处理项目中的不同类型的模块
 	module: {
 		rules: genRules('src', true)
-	},
-	// 以插件形式定制webpack构建过程
-	plugins: [
-		// 将文件复制到构建目录
-		new CopyWebpackPlugin([
-			{from: path.join(__dirname, './package.json'), to: '', toType: 'file'},
-			{from: path.join(__dirname, './README.md'), to: '', toType: 'file'}
-		])
-	],
+	}
 };
 
 module.exports = config;
